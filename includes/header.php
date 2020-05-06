@@ -18,7 +18,7 @@ else {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MyDairy</title>
 
-    <base href="http://localhost:8080/fuckbook/" target="_blank">
+    <base href="" target="_blank">
     <!-- CSS -->
     <link rel="icon" type="image/png" href="assets/images/icons/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
@@ -33,7 +33,7 @@ else {
 
         <nav>
             <a href="index.php" title="Home"><i class="fa fa-home" aria-hidden="true"></i></a>
-            <a href="<?php echo $user['id']; ?>" title="Profile"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <a href="<?php echo $userId; ?>" title="Profile"><i class="fa fa-user" aria-hidden="true"></i></a>
             <a href="friend_request.php" title="Friend Request"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
             <a href="" title="Message"><i class="fa fa-comments" aria-hidden="true"></i></a>
             <a href="logout.php" title="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>

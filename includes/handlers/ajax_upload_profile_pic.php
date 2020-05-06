@@ -22,10 +22,10 @@ if(isset($_POST['image'])) {
     $response = [];
 
     if($result) {
-        $dbImageName = "<img src='storage/user_avatar/".$userId.".png'>";
+        $dbImageName = "storage/user_avatar/".$userId.".png";
         $user->changeAvatar($dbImageName);
         $response['success'] = true;
-        $response['image'] = $dbImageName;
+        $response['image'] = "<img src='storage/user_avatar/".$userId.".png?t=".time()."'>";
     }
     else {
         $response['success'] = false;

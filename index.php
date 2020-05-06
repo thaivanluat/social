@@ -8,6 +8,7 @@ if(isset($_POST['post'])) {
     $post->submitPost($_POST['post_text'], $userId);
     header("Location: ./");
 }
+
 ?>
         <div class="user_details column">
             <a href="<?php echo $user['id']; ?>"><img class="avatar" src="<?php echo $user['avatar'] ?>"></a>

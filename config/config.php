@@ -88,4 +88,12 @@ function getDiffTime($postTime) {
 
     return $time_message;
 }
+
+function updateUserSession($id) {
+    $sql = "SELECT * FROM user WHERE id='$id'";
+    $query = mysqli_query($con, $sql);
+    $user = mysqli_fetch_array($query);
+
+    $_SESSION['user'] = $user;
+}
 ?>

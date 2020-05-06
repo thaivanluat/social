@@ -34,7 +34,7 @@ else {
     } 
 </style>
 <link rel="stylesheet" type="text/css" href="assets/vendor/croppie/css/croppie.css"/>
-
+<meta http-equiv="Pragma" content="no-cache" />
 <div class="main_column column" id="main_column">
     <div class="card">
         <div class="card-body">

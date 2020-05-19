@@ -22,6 +22,17 @@ if(isset($_POST['submit'])) {
         $password = md5($password);
     }
 
+    $sql = "SELECT email FROM user WHERE email='$email'";
+
+    $query = mysqli_query($con, $sql);
+
+    if (mysqli_num_rows($query) != 0) {
+        $error = "Email already exists";
+        $_SESSION['register_error_message'] = $error;
+        header("Location: register.php");
+        exit();
+    }
+
     $createdTime = date('Y-m-d H:i:s');
 
     // Profile picture assignment 

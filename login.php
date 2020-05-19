@@ -96,6 +96,9 @@ if(isset($_SESSION['user'])) {
 		</div>
 	</div>
 
+<?php
+	unset($_SESSION['error_message']);
+?>
 	
 	
 

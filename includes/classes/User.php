@@ -204,4 +204,39 @@ class User {
 
         return false;
     }
+
+    public function getRandomUser($number) {
+        $userId = $this->getId();
+        $sql = "SELECT friend_array FROM user WHERE id = '$userId'";
+        $query = mysqli_query($this->con, $sql);
+        $data = mysqli_fetch_array($query);
+        $friendListArray = $data['friend_array'];
+
+        $param = $friendListArray == '' ? '' : 'and id not in ('.$friendListArray.')';
+
+        $sql = "SELECT id, first_name, last_name, avatar FROM user WHERE id <> $userId $param ORDER BY RAND() LIMIT $number";
+        $query = mysqli_query($this->con, $sql);
+
+        $response = [];
+
+        while($row = mysqli_fetch_array($query)) {
+            $object = (object) $row;
+            $response[] = $object;
+        }
+
+        return $response;
+    }
+
+    public function countFriend(){
+        $userId = $this->getId();
+
+        $sql = "SELECT friend_array FROM user WHERE id = '$userId'";
+        $query = mysqli_query($this->con, $sql);
+
+        $data = mysqli_fetch_array($query);
+        $friendListArray = $data['friend_array'] =="" ? [] : explode(",", $data['friend_array']);
+
+        $number = count($friendListArray);
+        return $number;
+    }
 }

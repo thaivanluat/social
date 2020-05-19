@@ -6,7 +6,6 @@ include "includes/classes/Post.php";
 if(isset($_POST['post'])) {
     $post = new Post($con, $userId);
     $post->submitPost($_POST['post_text'], $userId);
-    header("Location: ./");
 }
 
 ?>
@@ -28,7 +27,7 @@ if(isset($_POST['post'])) {
         </div>
 
         <div class="main_column column">
-            <form action="index.php" method="POST" class="post_form">
+            <form method="POST" class="post_form">
                 <textarea name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
                 <input type="submit" name="post" id="post_button" value="Post" disabled>
                 <hr>

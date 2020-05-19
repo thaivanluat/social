@@ -6,12 +6,33 @@ include "includes/classes/User.php";
     .wrapper {
         margin: 0px;
     }
+
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .friend_suggestion {
+        margin: 20px;
+        font-style: inherit;
+        font-weight: 500;
+    }
+
+    .friend_suggestion a {
+        text-decoration: none;
+    }
 </style>
 <div class="main_column column" id="main_column">
     <h4>Friend Request</h4>
     <?php
         $sql = "SELECT * FROM friend_request WHERE to_user = '$userId'";
         $query = mysqli_query($con, $sql);
+
+        $user = new User($con, $userId);
+        
+        $numberOfFriend = $user->countFriend();
 
         if(mysqli_num_rows($query) == 0) {
             echo "You have no friend requests at this time";
@@ -44,7 +65,27 @@ include "includes/classes/User.php";
         }
     }
     ?>
+    <hr>
+    <div>
+        <?php if($numberOfFriend < 3) {
+            echo '<h5>Friend Suggestion</h5>';
+            $randomFriend = $user->getRandomUser(3);
+
+            foreach($randomFriend as $friend) {
+                
+                echo '<div class="friend_suggestion">
+                <a href="'.$friend->id.'">
+                <img src="'.$friend->avatar.'" alt="Avatar" class="avatar">              
+                <span>'.$friend->first_name.' '.$friend->last_name.'</span>
+                </a>
+                </div>';
+            }
+        }
+        ?>
+        
+    </div>
 </div>
+
 
 <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 

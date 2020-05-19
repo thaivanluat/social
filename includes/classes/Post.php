@@ -55,7 +55,7 @@ class Post {
                                                 ORDER BY id DESC LIMIT $offset, $numRecordPerPage");
 
 
-        if(mysqli_num_rows($data_query) > 0) {
+        if($data_query && mysqli_num_rows($data_query) > 0) {
 
             while($row = mysqli_fetch_array($data_query)) {
                 $addTime =  $row['posted_time'];
@@ -153,7 +153,7 @@ class Post {
             }
             echo $str;
         }
-    }
+        }
 
     public function loadProfilePost($userId) {
         if(isset($_POST['page_no'])){

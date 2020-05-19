@@ -321,7 +321,10 @@ if(isset($_SESSION['user'])) {
 	</div>
 
 	
-
+    <?php
+    unset($_SESSION['success_message']);
+    unset($_SESSION['register_error_message']);
+?>
 	
 <!--===============================================================================================-->	
 	<script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
